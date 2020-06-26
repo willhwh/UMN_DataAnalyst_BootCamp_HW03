@@ -21,6 +21,7 @@ with open(data_path,'r') as file:
     maxdate=" "
     min=0
     mindate=" "
+    
 
     #get the reminding rows which contain the data for date and profit/loss
     for row in csvreader:
@@ -40,6 +41,7 @@ with open(data_path,'r') as file:
         if min>int(row[1]):
             min=int(row[1])
             mindate=row[0]
+
     #calculate the average
     average=total/count
 
@@ -52,8 +54,9 @@ print(f"Average  Change: ${average}")
 print(f"Greatest Increase in Profits: {maxdate} (${max})")
 print(f"Greatest Decrease in Profits: {mindate} (${min})")
 
-#open a txt file
-with open ("analysis/result.txt","w") as file:
+
+#create and open a txt file
+with open ("analysis/result.txt","w", encoding='utf-8') as file:
     #set , as the delimiter
     csvwriter=csv.writer(file,delimiter=",")
 
